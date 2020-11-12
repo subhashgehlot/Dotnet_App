@@ -1,0 +1,25 @@
+Q 1. Why should we use Github?
+
+Ans: Git is basically a cloud for developers/programmers to upload their codes.
+     like, we can consider a scenario where I'm building a website and I stuck at some point where I don't know the code and I need some help from my friend,
+     who lives at far distance, so here GitHub can actually help by saving the code in the cloud, which means both me and my friend can do changes in the code and commit it.
+     Another scenario is that, let's consider I'm working on a project of developing a software with my team, and I have found some issues with the software and I've changed the code, 
+     at this point my team members won't know the change done by so here, GitHub comes into play, I can commit the change in the code in repository and my members will able see that.
+     
+     So, GitHub works as a portfolio for programmers, they can discuss the issues with other programmers. Developers can work on any open-source project. 
+     This is why GitHub should be used by every programmer.
+     
+Q 2. Benefits over storing it on our local machine?
+
+Ans: Benefits of GitHub over storing code on our local machine are: 
+     1. If we comes with any issue in our code, GitHub here plays a major role by which programmer from anywhere can solve the issue.
+     2. There is always a backup copy of our code i.e., stored on GitHub, like there a feature, Branching in GitHub (which means there is a main branch where our code is stored and 
+        we can make any other branch which is the copy of main branch, changes can be done in that branch and if that is correct we can merge the branch and commit the change). 
+        By this way GitHub is very helpful.
+     3. Programmer from anywhere can work on open-source project which can only work on cloud based platform i.e., GitHub.
+     
+Q 3. What are the areas which are benefited or helps to improve our daily work if we use GitHub?
+
+Ans: By using GitHub, any person in the world can see or work on our code without carrying laptop, hard drive. It is the perfect way to showcase our work and attract more clients.
+     The best feature is that it is cross-platform and we can use it on any machine i.e., Windows, Linux or MacOS. GitHub is itself collaborative, any project is open for collaborations.
+     We can solve issues of other developers and create original content.
