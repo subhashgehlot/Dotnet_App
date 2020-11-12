@@ -23,3 +23,20 @@ Q 3. What are the areas which are benefited or helps to improve our daily work i
 Ans: By using GitHub, any person in the world can see or work on our code without carrying laptop, hard drive. It is the perfect way to showcase our work and attract more clients.
      The best feature is that it is cross-platform and we can use it on any machine i.e., Windows, Linux or MacOS. GitHub is itself collaborative, any project is open for collaborations.
      We can solve issues of other developers and create original content.
+
+
+
+Updated Points About GitHub:
+
+So, above we have learnt some Points about GitHub, but there are some corrections: 
+
+1. GitHub is a platform where anyone can create it's own repository as a folder on its local machine  and can save/upload any file or document on that. We can clone the folder
+   to GitHub, as the repository from our local machine and can add, commit the changes.
+2. Earlier, if any developer had any issue in the console app, he/she is developing then, the whole code was to be sent to the other programmer so that he can correct it, 
+   but in GitHub, he/she can save the code in repository without sending the complete code to the particular programmer, let's consider that one has done the changes and 
+   he/she don't want that change that could be easily done by pull request and here, in GitHub not only one but many programmer can correct that issue, this can't be done without GitHub.
+3. We have also control over the repository that it should be accessed publicly or not, we could set it private, consider if we are developing any app and the repository is public
+   then anyone can copy the code and name the app with him, so to not let this happen we can set the repository to private and can manage the access.
+4. It is also helpful for a team working on a project and if anyone of them do some changes in the code, it won't be accessible to other team members, if that is in seperate machines 
+   so basically, GitHub connects all the team member's machines virtually and all the team members can notice the change done by anyone.
+   
