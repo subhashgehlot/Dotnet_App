@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Documents\\Dotnet_App\\Dotnet_App.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Documents\\Dotnet_App\\Console App\\Dotnet_App.csproj",
       "projectName": "Dotnet_App",
-      "projectPath": "C:\\Users\\HP\\Documents\\Dotnet_App\\Dotnet_App.csproj",
+      "projectPath": "C:\\Users\\HP\\Documents\\Dotnet_App\\Console App\\Dotnet_App.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Documents\\Dotnet_App\\obj\\",
+      "outputPath": "C:\\Users\\HP\\Documents\\Dotnet_App\\Console App\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"

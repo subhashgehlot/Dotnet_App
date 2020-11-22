@@ -1,16 +1,50 @@
 ﻿using System;
 
-namespace Dotnet_App
+namespace Program
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("\nWhat is your name? ");
-            var name = Console.ReadLine();
-            var date = DateTime.Now;
-            Console.WriteLine($"\nHello, {name}, on {date:d} at {date:t}!");
+    public class Doctor {
+
+        public String drName = "Mk Shah";
+        
+        public void Specialist() {
+
+            Console.WriteLine("Neuro - Surgeon");
+        }
+    }
+
+    public class Hospital {
+
+        string hName = "XYZ Hospital";
+        int totDoctors = 43;
+
+        public Hospital() {
+
+            Console.WriteLine("Good Specialist Doctors.");
+        }
+
+        Doctor obj = new Doctor();
+
+        public void service() {
+
+            Console.WriteLine("Hospital Name = " + hName);
+            Console.WriteLine("Total Doctors = " + totDoctors);
+            Console.WriteLine("Good Service...!!!");
+            visitorDoctor();
+        }
+
+        void visitorDoctor() {
+
+            Console.WriteLine("Doctor Name = " + obj.drName);
+            obj.Specialist();
+        }
+    }
+
+    class Patient {
+        
+        static bool Main(string[] args) {
+
+            Hospital p1 = new Hospital();
+            p1.service();
             Console.Write("\nPress any key to exit...");
             Console.ReadKey(true);
         }
