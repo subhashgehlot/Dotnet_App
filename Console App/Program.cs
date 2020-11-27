@@ -39,9 +39,10 @@ namespace Program
         }
     }
 
-    class Patient {
-        
-        static bool Main(string[] args) {
+    class Program
+    {
+        static void Main(string[] args)
+        {
 
             Hospital p1 = new Hospital();
             p1.service();
