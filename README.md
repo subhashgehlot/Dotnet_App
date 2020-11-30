@@ -1,4 +1,4 @@
-This repository is for training and learning purpose. The following steps were taken on following date:
+This repository is for training and learning purpose. The following tasks were performed on following date:
 
 1. 26/10/2020 - Installed Vscode and GitHub and created a repository
 
