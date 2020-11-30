@@ -1,0 +1,12 @@
+Q.1 What is Docker?
+Ans: Docker is basically a platform on which any app can be converted into image and can be run in form of containers, which consists of application source code and 
+     OS libraries so that it could run in any environment.
+     There is a image sharing platform ie. Docker Hub, in which we can upload our image in public or private repository and we can also download any image available in docker hub 
+     and can add that image to uor app.
+
+Q.2 Why is docker?
+Ans: Earlier, if any company's any app is developed by the developer team using there system and machines and then after developing they take the whole code to the Production team
+     for deployment of app and the Production team could have differ configuration and differ versions so, there could be some some error so to remove this conflict, docker comes into
+     play where the image can be build and can be uploaded to the Docker Hub(Basically, a repository to share app) by the developer team and later, it can be downloaded by the Prod team
+     with no versions issue and compatibility issues.
+     
