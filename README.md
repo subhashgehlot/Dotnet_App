@@ -17,3 +17,7 @@ This repository is for training and learning purpose. The following tasks were p
 8. 29/11/2020 - Installed and setup Docker
 
 9. 30/11/2020 - Created a .txt file on what docker is?? and uploaded on GitHub
+
+10. 02/12/2020 - Pull image for SQL server and run some SQL queries.
+
+11. 05/12/2020 - Created a console app with real time Overriding Concepts.
