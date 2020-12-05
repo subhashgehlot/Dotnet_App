@@ -1,0 +1,9 @@
+
+version: '3.4'
+
+services:
+  overloadingapp:
+    image: overloadingapp
+    build:
+      context: .
+      dockerfile: Overloading App/Dockerfile

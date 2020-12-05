@@ -1,0 +1,11 @@
+
+version: '3.4'
+
+services:
+  overloadingapp:
+    image: overloadingapp
+    build:
+      context: .
+      dockerfile: Overloading App/Dockerfile
+    volumes:
+      - ~/.vsdbg:c:\remote_debugger:rw

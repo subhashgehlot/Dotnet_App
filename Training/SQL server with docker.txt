@@ -1,0 +1,16 @@
+1. PS C:\Users\HP\Documents\Dotnet_App> docker pull mcr.microsoft.com/mssql/server:2019-latest     
+this is to pull the sql server image.
+
+2.PS C:\Users\HP\Documents\Dotnet_App> docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=<YourStrong@Passw0rd>" -p 1433:1433 --name sql1 -h sql1 -d mcr.microsoft.com/mssql/server:2019-latest
+this is to run the container of sql server.
+
+3. PS C:\Users\HP\Documents\Dotnet_App> docker ps -a
+this to see the all containers in docker.
+
+4. PS C:\Users\HP\Documents\Dotnet_App> docker exec -it sql1 "bash"
+this is to start an interactive bash shell inside container.
+
+5. mssql@sql1:/$ /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourStrong@Passw0rd>"
+this is to specify the path to the sqlcmd in container.
+
+6. Performed some sql queries
