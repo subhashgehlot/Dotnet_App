@@ -1,24 +1,42 @@
 ﻿using System;
+using System.Data;
 
-namespace Program {
-    public class School {
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
-        String name;
-        int staff;
+namespace MySql.Data.MySqlClient
+{
+    public class School
+    {
 
-        public School() {
+        public string name;
+        public int staff;
+        public static int len;
+
+        public void ArrSize() {
+        
+            Console.Write("\nEnter the Number of Student Data You want to Enter: ");
+            len = Convert.ToInt32(Console.ReadLine());
+        }
+
+        public int l = len;
+
+        public School()
+        {
+
+        }
+        public School(string name, int staff)
+        {
             
             Console.WriteLine("Established in 1990's");
-        }
-        public School(String name, int staff) {
-
             this.name = name;
             this.staff = staff;
             Console.WriteLine("School Name: " + name);
             Console.WriteLine("Staff: " + staff + " Teachers.");
         }
 
-        public void studentDetails() {
+        public virtual void studentDetail()
+        {
 
             Console.WriteLine("Please Enter Details!!!");
         }

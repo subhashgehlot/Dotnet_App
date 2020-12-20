@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Overloading App/Overloading App.csproj",
+                "${workspaceFolder}/Console App/Dotnet_App.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Overloading App/Overloading App.csproj",
+                "${workspaceFolder}/Console App/Dotnet_App.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,71 +32,11 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/Overloading App/Overloading App.csproj",
+                "${workspaceFolder}/Console App/Dotnet_App.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
-        },
-        {
-            "type": "docker-build",
-            "label": "docker-build: debug",
-            "dependsOn": [
-                "build"
-            ],
-            "dockerBuild": {
-                "tag": "dotnetapp:dev",
-                "target": "base",
-                "dockerfile": "${workspaceFolder}/Overloading App/Dockerfile",
-                "context": "${workspaceFolder}",
-                "pull": true
-            },
-            "netCore": {
-                "appProject": "${workspaceFolder}/Overloading App/Overloading App.csproj"
-            }
-        },
-        {
-            "type": "docker-build",
-            "label": "docker-build: release",
-            "dependsOn": [
-                "build"
-            ],
-            "dockerBuild": {
-                "tag": "dotnetapp:latest",
-                "dockerfile": "${workspaceFolder}/Overloading App/Dockerfile",
-                "context": "${workspaceFolder}",
-                "pull": true
-            },
-            "netCore": {
-                "appProject": "${workspaceFolder}/Overloading App/Overloading App.csproj"
-            }
-        },
-        {
-            "type": "docker-run",
-            "label": "docker-run: debug",
-            "dependsOn": [
-                "docker-build: debug"
-            ],
-            "dockerRun": {
-                "os": "Windows"
-            },
-            "netCore": {
-                "appProject": "${workspaceFolder}/Overloading App/Overloading App.csproj",
-                "enableDebugging": true
-            }
-        },
-        {
-            "type": "docker-run",
-            "label": "docker-run: release",
-            "dependsOn": [
-                "docker-build: release"
-            ],
-            "dockerRun": {
-                "os": "Windows"
-            },
-            "netCore": {
-                "appProject": "${workspaceFolder}/Overloading App/Overloading App.csproj"
-            }
         }
     ]
 }

@@ -1,27 +1,28 @@
 using System;
+using System.Data;
 
-namespace Program  {
+using MySql.Data;
+using MySql.Data.MySqlClient;
+
+namespace MySql.Data.MySqlClient
+{
 
     public class Student : School {
 
         public Student() {
 
         }
-
-        public void studentDetail() {
-
-            Console.Write("\nEnter the Number of Student Data You want to Enter: ");
-            int len = Convert.ToInt32(Console.ReadLine());
-
-            String[] name = new String[len];
-            int[] rollNo = new int[len];
-            String[] grade = new String[len];
-            float[] mark = new float[len];
+        
+        public String[] Name = new String[len];
+        public int[] rollNo = new int[len];
+        public String[] grade = new String[len];
+        public float[] mark = new float[len];
+        public override void studentDetail() {
 
             for(int i = 0; i < len; i++) {
 
                 Console.Write("\nEnter Student "+ (i+1) +" Name: ");
-                name[i] = Console.ReadLine();
+                Name[i] = Console.ReadLine();
                 Console.Write("Enter Student "+ (i+1) +" Roll No.: ");
                 rollNo[i] = Convert.ToInt32(Console.ReadLine());
                 Console.Write("Enter Student "+ (i+1) +" Grade: ");
@@ -30,12 +31,7 @@ namespace Program  {
                 mark[i] = Convert.ToSingle(Console.ReadLine());
             }
 
-            Console.WriteLine("Student Details are Given Below: \n");
-            Console.WriteLine("\tRoll No.\t\tName\t\tMarks\t\tGrade");
-            for(int i = 0; i < len; i++) {
-
-                Console.WriteLine("\t\t" + rollNo[i] + "\t\t" + name[i] + "\t\t" + mark[i] + "\t\t" + grade[i]);
-            }
+            Console.WriteLine("Check The Database....Data has Entered!!!");
         }
     }
 }
