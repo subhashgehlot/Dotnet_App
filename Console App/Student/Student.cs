@@ -12,11 +12,11 @@ namespace MySql.Data.MySqlClient
         public Student() {
 
         }
-        
         public String[] Name = new String[len];
         public int[] rollNo = new int[len];
         public String[] grade = new String[len];
         public float[] mark = new float[len];
+
         public override void studentDetail() {
 
             for(int i = 0; i < len; i++) {
