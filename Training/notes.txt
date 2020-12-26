@@ -1,0 +1,5 @@
+1). To remove un-necessary object & variables.
+2). Only call should be in the main function.
+3). variable name should be full.
+4). Add configuration for connectionString.
+5). 

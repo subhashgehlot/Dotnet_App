@@ -1,51 +1,18 @@
 using System;
-using System.Data;
-
-using MySql.Data;
-using MySql.Data.MySqlClient;
 
 namespace MySql.Data.MySqlClient {
     public class Program {
+
         public static void Main(String[] args) {
 
-            School details = new School("Sinhagad School", 55);
-            details.ArrSize();
-            Student detail = new Student();
-            detail.studentDetail();
+            //call to School constructor
+            School schoolInfo = new School("Sinhagad School", 55);
+            schoolInfo.numOfStudent();
 
-            //Student detail = new Student();
-
-            string connStr = "server=127.0.0.1;user=root;database=console app;port=3306;password=123456";
-            MySqlConnector.MySqlConnection conn = new MySqlConnector.MySqlConnection(connStr);
-            
-            
-            try {
-                Console.WriteLine("Connecting to MySQL...");
-                conn.Open();
-           
-                for(int i = 0; i < detail.l; i++) {
-
-                    const string sql = "INSERT INTO details(Student_Name, Student_Roll_no, Student_Grade, Student_Marks) VALUES(@Name, @rollNo, @grade, @mark)";
-
-                    MySqlConnector.MySqlCommand cmd = new MySqlConnector.MySqlCommand(sql, conn);
-
-                    cmd.Parameters.AddWithValue("@Name", detail.Name[i]);
-                    cmd.Parameters.AddWithValue("@rollNo", detail.rollNo[i]);
-                    cmd.Parameters.AddWithValue("@grade", detail.grade[i]);
-                    cmd.Parameters.AddWithValue("@mark", detail.mark[i]);
-
-                    cmd.ExecuteNonQuery();
-                }
-                
-                conn.Close();
-                Console.WriteLine("Done.");
-            }                
-            
-            catch (Exception ex) {
-
-                Console.WriteLine(ex.ToString());
-            }
-
+            //call to studentDetail and MySQLConn to store values and store in database
+            Student studentDetail = new Student();
+            studentDetail.studentDetails();
+            studentDetail.mySQLConn();
         }
     }
 }
