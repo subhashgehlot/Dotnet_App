@@ -1,4 +1,5 @@
 using System;
+using System.Configuration;
 
 namespace MySql.Data.MySqlClient
 {
@@ -32,16 +33,18 @@ namespace MySql.Data.MySqlClient
         }
         public void mySQLConn() {
 
-            string connection = "server=127.0.0.1;user=root;database=console app;port=3306;password=123456";
-            MySqlConnector.MySqlConnection conn = new MySqlConnector.MySqlConnection(connection);
+            //string connectionString = "server=127.0.0.1;user=root;database=console app;port=3306;password=123456";
+            string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+
+            MySqlConnector.MySqlConnection conn = new MySqlConnector.MySqlConnection(connectionString);
 
             try {
                 Console.WriteLine("Connecting to MySQL...");
                 conn.Open();
-           
+            
                 for(int i = 0; i < numStudent; i++) {
 
-                    const string sql = "INSERT INTO details(Student_Name, Student_Roll_no, Student_Grade, Student_Marks) VALUES(@Name, @rollNo, @grade, @mark)";
+                    string sql = "INSERT INTO details(Student_Name, Student_Roll_no, Student_Grade, Student_Marks) VALUES(@Name, @rollNo, @grade, @mark)";
 
                     MySqlConnector.MySqlCommand cmd = new MySqlConnector.MySqlCommand(sql, conn);
 
