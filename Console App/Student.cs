@@ -30,15 +30,17 @@ namespace MySql.Data.MySqlClient
             }
 
             Console.WriteLine("Check The Database....Data has Updated!!!");
+            Console.WriteLine(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None).FilePath);
         }
         public void mySQLConn() {
 
             //string connectionString = "server=127.0.0.1;user=root;database=console app;port=3306;password=123456";
-            string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+            string ConnectionStrings = ConfigurationManager.ConnectionStrings["Connection"].ToString();
 
-            MySqlConnector.MySqlConnection conn = new MySqlConnector.MySqlConnection(connectionString);
+            MySqlConnector.MySqlConnection conn = new MySqlConnector.MySqlConnection(ConnectionStrings);
 
             try {
+
                 Console.WriteLine("Connecting to MySQL...");
                 conn.Open();
             
