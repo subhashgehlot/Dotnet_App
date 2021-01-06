@@ -1,5 +1,6 @@
 using System;
 using System.Configuration;
+using MySqlConnector;
 
 namespace MySql.Data.MySqlClient
 {
@@ -9,33 +10,62 @@ namespace MySql.Data.MySqlClient
         public Student() {
 
         }
+        
+        public static int numStudent;
+        public override void numOfStudent() {
 
-        String[] Name = new String[numStudent];
-        int[] rollNo = new int[numStudent];
-        String[] grade = new String[numStudent];
-        float[] mark = new float[numStudent];
+            Console.Write("\n\tEnter Number of Student's details to store: ");
+            numStudent = Convert.ToInt32(Console.ReadLine());
+        }
 
+        public String[] studID = new String[numStudent];
+        public String[] studName = new String[numStudent];
+        public int[] studRollNo = new int[numStudent];
+        public char[] studGrade = new char[numStudent];
+        public float[] studMark = new float[numStudent];
+
+        // To Enter Student Details
         public override void studentDetails() {
 
             for(int i = 0; i < numStudent; i++) {
 
+                Console.Write("\nEnter Student "+ (i+1) +" Unique ID: ");
+                studID[i] = Console.ReadLine();
                 Console.Write("\nEnter Student "+ (i+1) +" Name: ");
-                Name[i] = Console.ReadLine();
+                studName[i] = Console.ReadLine();
                 Console.Write("Enter Student "+ (i+1) +" Roll No.: ");
-                rollNo[i] = Convert.ToInt32(Console.ReadLine());
+                studRollNo[i] = Convert.ToInt32(Console.ReadLine());
                 Console.Write("Enter Student "+ (i+1) +" Grade: ");
-                grade[i] = Console.ReadLine();
+                studGrade[i] = Convert.ToChar(Console.ReadLine());
                 Console.Write("Enter Student "+ (i+1) +" Marks: ");
-                mark[i] = Convert.ToSingle(Console.ReadLine());
+                studMark[i] = Convert.ToSingle(Console.ReadLine());
+            }
+
+            if(numStudent > 1) {
+
+                for(int i = 0; i < numStudent; i++) {
+
+                    for(int j = i; j < numStudent; j++) {
+                    
+                        if((studID[i] == studID[j]) || (studRollNo[i] == studRollNo[j])) {
+
+                            Console.WriteLine("Already Exists...!!!\nPlease Enter differ Roll No. OR Student ID!!!");
+                            Environment.Exit(-1);
+                        }
+                    }
+                }
             }
 
             Console.WriteLine("Check The Database....Data has Updated!!!");
         }
-        public void mySQLConn() {
 
-            string ConnectionStrings = ConfigurationManager.ConnectionStrings["Connection"].ToString();
+        // To store the Entered Details in the Database
+        public override void mySQLConn() {
 
-            MySqlConnector.MySqlConnection conn = new MySqlConnector.MySqlConnection(ConnectionStrings);
+            // connection string in which the user, database, server and password is stored.
+            string connectionStrings = ConfigurationManager.ConnectionStrings["Connection"].ToString();
+
+            MySqlConnection conn = new MySqlConnection(connectionStrings);
 
             try {
 
@@ -44,14 +74,16 @@ namespace MySql.Data.MySqlClient
             
                 for(int i = 0; i < numStudent; i++) {
 
-                    string sql = "INSERT INTO details(Student_Name, Student_Roll_no, Student_Grade, Student_Marks) VALUES(@Name, @rollNo, @grade, @mark)";
+                    // Insert values into studentdetails table
+                    string sql = "INSERT INTO studentdetails(Student_Id, Student_Name, Student_Roll_no, Student_Grade, Student_Marks) VALUES(@studID, @studName, @studRollNo, @studGrade, @studMark)";
 
-                    MySqlConnector.MySqlCommand cmd = new MySqlConnector.MySqlCommand(sql, conn);
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                    cmd.Parameters.AddWithValue("@Name", Name[i]);
-                    cmd.Parameters.AddWithValue("@rollNo", rollNo[i]);
-                    cmd.Parameters.AddWithValue("@grade", grade[i]);
-                    cmd.Parameters.AddWithValue("@mark", mark[i]);
+                    cmd.Parameters.AddWithValue("@studID", studID[i]);
+                    cmd.Parameters.AddWithValue("@studName", studName[i]);
+                    cmd.Parameters.AddWithValue("@studRollNo", studRollNo[i]);
+                    cmd.Parameters.AddWithValue("@studGrade", studGrade[i]);
+                    cmd.Parameters.AddWithValue("@studMark", studMark[i]);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -64,6 +96,50 @@ namespace MySql.Data.MySqlClient
 
                 Console.WriteLine(ex.ToString());
             }
+        }
+
+        public override void dataFetch() {
+
+            String connectionString = ConfigurationManager.ConnectionStrings["Connection"].ToString();
+
+            MySqlConnection conn = new MySqlConnection(connectionString);
+
+            Console.Write("Enter a Student ID to search in Database: ");
+            String id = Console.ReadLine();
+            bool temp = false;
+
+            try {
+
+                Console.WriteLine("Fetching The Data from Database...");
+                conn.Open();
+
+                string sql = "SELECT Student_Name, Student_Roll_no FROM studentdetails WHERE Student_Id = '" + id + "'";
+                
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader data = cmd.ExecuteReader();
+
+                while(data.Read()) {
+
+                    Console.WriteLine("Name: " + data[0]);
+                    Console.WriteLine("Roll No: " + data[1]);
+                    temp = true;
+                    
+                }
+
+                if(temp == false) {
+
+                    Console.WriteLine("Student with given ID is not present");
+                }
+
+                data.Close();
+            }
+            catch(Exception ex) {
+
+                Console.WriteLine(ex.ToString());
+            }
+
+            conn.Close();
+            Console.WriteLine("Done.");
         }
     }
 }
