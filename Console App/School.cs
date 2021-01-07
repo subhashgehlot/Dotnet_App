@@ -12,12 +12,11 @@ namespace MySql.Data.MySqlClient
 
         }
 
-        public static int numStudent;
-        public void numOfStudent() {
+        public virtual void numOfStudent() {
 
-            Console.Write("\n\tEnter Number of Students: ");
-            numStudent = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("No. of Student's data to Enter.");
         }
+        
         public School(string schoolName, int staff)
         {
             
@@ -32,6 +31,16 @@ namespace MySql.Data.MySqlClient
         {
 
             Console.WriteLine("Please Enter Details!!!");
+        }
+
+        public virtual void mySQLConn() {
+
+            Console.WriteLine("Connection to Database");
+        }
+
+        public virtual void dataFetch() {
+
+            Console.WriteLine("Fetching Data from Database....");
         }
     }
 }
