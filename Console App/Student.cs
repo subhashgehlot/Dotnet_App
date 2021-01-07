@@ -12,21 +12,19 @@ namespace MySql.Data.MySqlClient
         }
         
         public static int numStudent;
+
         public override void numOfStudent() {
 
             Console.Write("\n\tEnter Number of Student's details to store: ");
             numStudent = Convert.ToInt32(Console.ReadLine());
         }
 
-<<<<<<< HEAD
         public string[] studID = new string[numStudent];
         public string[] studName = new string[numStudent];
-=======
-        public String[] studID = new String[numStudent];
-        public String[] studName = new String[numStudent];
->>>>>>> b34d72f69a6831e7b153fdef89080e619dac5373
         public int[] studRollNo = new int[numStudent];
+        
         public char[] studGrade = new char[numStudent];
+        
         public float[] studMark = new float[numStudent];
 
         // To Enter Student Details
