@@ -5,16 +5,11 @@ namespace MySql.Data.MySqlClient
     public class School
     {
 
-        public string schoolName;
-        public int staff;
+        private string schoolName;
+        private int staff;
         public School()
         {
 
-        }
-
-        public virtual void numOfStudent() {
-
-            Console.WriteLine("No. of Student's data to Enter.");
         }
         
         public School(string schoolName, int staff)
@@ -31,16 +26,6 @@ namespace MySql.Data.MySqlClient
         {
 
             Console.WriteLine("Please Enter Details!!!");
-        }
-
-        public virtual void mySQLConn() {
-
-            Console.WriteLine("Connection to Database");
-        }
-
-        public virtual void dataFetch() {
-
-            Console.WriteLine("Fetching Data from Database....");
         }
     }
 }

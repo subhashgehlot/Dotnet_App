@@ -5,10 +5,8 @@ namespace MySql.Data.MySqlClient {
 
         public static void Main(String[] args) {
 
-            //call to School constructor
-            School schoolInfo = new School("Sinhagad School", 55);
-                    
-            School studentDetail = new Student();
+            School schoolInfo = new School("Sinhagad School", 55);         
+            MyDatabaseConnection myConnection = new MyDatabaseConnection();
             
             char ch;
             do{
@@ -23,17 +21,15 @@ namespace MySql.Data.MySqlClient {
                 switch(num) {
 
                     case 1:
-                        // call to num of student's data to enter method.
-                        studentDetail.numOfStudent();
                         // call to studentDetail to enter student's details
-                        studentDetail.studentDetails();
+                        myConnection.studentDetails();
                         // call to mySQLConn() method to store entered details in Database 
-                        studentDetail.mySQLConn();
+                        myConnection.mySQLConn();
                         break;
 
                     case 2:
                         // call to dataFetch() method to fetch data from Database
-                        studentDetail.dataFetch(); 
+                        myConnection.dataFetch(); 
                         break;
 
                     default:
