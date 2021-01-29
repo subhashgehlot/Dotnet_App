@@ -2,107 +2,70 @@ using System;
 using System.Configuration;
 using MySqlConnector;
 
-namespace MySql.Data.MySqlClient {
-    public class MyDatabaseConnection : Student {
-
-        public string StudentID {
-            get{return studentID;} 
-            set{studentID = value;}
-        }
-        public string StudentName {
-            get{return studentName;}
-            set{studentName = value;}
-        }
-        public int StudentRollNo {
-            get{return studentRollNo;}
-            set{studentRollNo = value;}
-        }
-        public char StudentGrade {
-            get{return studentGrade;}
-            set{studentGrade = value;}
-        }
-        public float StudentMarks {
-            get{return studentMarks;}
-            set{studentMarks = value;}
-         }
-
-        public void mySQLConn() {
-
+namespace ConsoleApp {
+    public class MyDatabaseConnection : StudentProperties {
         // connection string in which the user, database, server and password is stored.
-        string connectionStrings = ConfigurationManager.ConnectionStrings["Connection"].ToString();
-
-        MySqlConnection conn = new MySqlConnection(connectionStrings);
-
-        try {
-
-            Console.WriteLine("Connecting to MySQL...");
-            conn.Open();
-
-            // Insert values into studentdetails table
-            string sql = "INSERT INTO studentdetails(Student_Id, Student_Name, Student_Roll_no, Student_Grade, Student_Marks) VALUES(@StudentID, @StudentName, @StudentRollNo, @StudentGrade, @StudentMarks)";
-
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-            cmd.Parameters.AddWithValue("@StudentID", studentID);
-            cmd.Parameters.AddWithValue("@StudentName", studentName);
-            cmd.Parameters.AddWithValue("@StudentRollNo", studentRollNo);
-            cmd.Parameters.AddWithValue("@StudentGrade", studentGrade);
-            cmd.Parameters.AddWithValue("@StudentMark", studentMarks);
-
-            cmd.ExecuteNonQuery();
-                
-            conn.Close();
-            Console.WriteLine("Done.");
-        }                
+        string ConnectionString = ConfigurationManager.ConnectionStrings["Connection"].ToString();
+        public void MySQLConn() {
             
-        catch (Exception ex) {
-
-            Console.WriteLine(ex.ToString());
-        }
-        }
-
-    
-    public void dataFetch() {
-
-            String connectionString = ConfigurationManager.ConnectionStrings["Connection"].ToString();
-
-            MySqlConnection conn = new MySqlConnection(connectionString);
-
-            Console.Write("Enter a Student ID to search in Database: ");
-            String id = Console.ReadLine();
-            bool temp = false;
+            MySqlConnection Connection = new MySqlConnection(ConnectionString);
 
             try {
+                Console.WriteLine("Connecting to MySQL...");
+                Connection.Open();
 
-                Console.WriteLine("Fetching The Data from Database...");
-                conn.Open();
+                // Insert values into studentdetails table
+                string InsertString = "INSERT INTO studentdetails(Student_Id, Student_Name, Student_Roll_no, Student_Grade, Student_Marks) VALUES(@StudentID, @StudentName, @StudentRollNo, @StudentGrade, @StudentMarks)";
 
-                string sql = "SELECT Student_Name, Student_Roll_no FROM studentdetails WHERE Student_Id = '" + id + "'";
+                MySqlCommand Command = new MySqlCommand(InsertString, Connection);
+
+                Command.Parameters.AddWithValue("@StudentID", StudentID);
+                Command.Parameters.AddWithValue("@StudentName", StudentName);
+                Command.Parameters.AddWithValue("@StudentRollNo", StudentRollNo);
+                Command.Parameters.AddWithValue("@StudentGrade", StudentGrade);
+                Command.Parameters.AddWithValue("@StudentMarks", StudentMarks);
+
+                Command.ExecuteNonQuery();
                 
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                MySqlDataReader data = cmd.ExecuteReader();
-
-                while(data.Read()) {
-
-                    Console.WriteLine("Name: " + data[0]);
-                    Console.WriteLine("Roll No: " + data[1]);
-                    temp = true;
-                    
-                }
-
-                if(temp == false) {
-
-                    Console.WriteLine("Student with given ID is not present");
-                }
-
-                data.Close();
-            }
-            catch(Exception ex) {
+                Connection.Close();
+                Console.WriteLine("Done.");
+            } catch (Exception ex) {
 
                 Console.WriteLine(ex.ToString());
             }
+        } 
+        public void DataFetch() {
+            MySqlConnection Connection = new MySqlConnection(ConnectionString);
 
-            conn.Close();
+            Console.Write("Enter a Student ID to search in Database: ");
+            String ID = Console.ReadLine();
+        
+            bool Temp = false;
+
+            try {
+                Console.WriteLine("Fetching The Data from Database...");
+                Connection.Open();
+
+                string FetchString = "SELECT Student_Name, Student_Roll_no FROM studentdetails WHERE Student_Id = '" + ID + "'";
+                
+                MySqlCommand Command = new MySqlCommand(FetchString, Connection);
+                MySqlDataReader Data = Command.ExecuteReader();
+
+                while(Data.Read()) {
+                    Console.WriteLine("Name: " + Data[0]);
+                    Console.WriteLine("Roll No: " + Data[1]);
+                    Temp = true;            
+                }
+
+                if(Temp == false) {
+                    Console.WriteLine("Student with given ID is not present");
+                }
+                Data.Close();
+            } catch(Exception ex) {
+                Console.WriteLine(ex.ToString());
+            }
+
+            Connection.Close();
             Console.WriteLine("Done.");
         }
     }
