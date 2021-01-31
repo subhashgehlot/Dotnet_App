@@ -1,12 +1,13 @@
 using System;
 using System.Configuration;
 using MySqlConnector;
+using ConsoleApp.Models;
 
-namespace ConsoleApp {
-    public class MyDatabaseConnection : StudentProperties {
+namespace ConsoleApp.DataLayer {
+    public class StudentDataLayer {
         // connection string in which the user, database, server and password is stored.
         string ConnectionString = ConfigurationManager.ConnectionStrings["Connection"].ToString();
-        public void MySQLConn() {
+        public void AddStudent() {
             
             MySqlConnection Connection = new MySqlConnection(ConnectionString);
 
@@ -34,7 +35,7 @@ namespace ConsoleApp {
                 Console.WriteLine(ex.ToString());
             }
         } 
-        public void DataFetch() {
+        public void GetStudent() {
             MySqlConnection Connection = new MySqlConnection(ConnectionString);
 
             Console.Write("Enter a Student ID to search in Database: ");

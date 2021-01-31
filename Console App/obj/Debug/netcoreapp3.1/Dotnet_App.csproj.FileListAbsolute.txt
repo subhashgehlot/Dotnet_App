@@ -59,3 +59,8 @@ C:\Users\HP\Documents\Dotnet_App\Console App\bin\Debug\netcoreapp3.1\runtimes\wi
 C:\Users\HP\Documents\Dotnet_App\Console App\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Users\HP\Documents\Dotnet_App\Console App\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Users\HP\Documents\Dotnet_App\Console App\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\GitHub\Himanshu\Dotnet_App\Console App\obj\Debug\netcoreapp3.1\Dotnet_App.csprojAssemblyReference.cache
+D:\GitHub\Himanshu\Dotnet_App\Console App\obj\Debug\netcoreapp3.1\Dotnet_App.AssemblyInfoInputs.cache
+D:\GitHub\Himanshu\Dotnet_App\Console App\obj\Debug\netcoreapp3.1\Dotnet_App.AssemblyInfo.cs
+D:\GitHub\Himanshu\Dotnet_App\Console App\obj\Debug\netcoreapp3.1\Dotnet_App.dll
+D:\GitHub\Himanshu\Dotnet_App\Console App\obj\Debug\netcoreapp3.1\Dotnet_App.pdb
