@@ -1,9 +1,13 @@
 using System;
+using ConsoleApp.Models;
+using ConsoleApp.DataLayer;
 
 namespace ConsoleApp {
     public class Program {
         public static void Main(String[] args) {
-            MyDatabaseConnection MyConnection = new MyDatabaseConnection(); 
+
+            Student StudentData = new Student();
+            StudentDataLayer StudentDetails = new StudentDataLayer();
             char Agree;
 
             do {
@@ -15,15 +19,15 @@ namespace ConsoleApp {
 
                 switch(Choice) {
                     case 1:
-                        // call to studentDetail to enter student's details
-                        MyConnection.StudentDetails();
-                        // call to mySQLConn() method to store entered details in Database 
-                        MyConnection.MySQLConn();
+                        // call to GiveStudentDetail to enter student's details
+                        StudentData.GiveStudentDetails();
+                        // call to AddStudent method to store entered details in Database 
+                        StudentDetails.AddStudent();
                         break;
 
                     case 2:
-                        // call to dataFetch() method to fetch data from Database
-                        MyConnection.DataFetch(); 
+                        // call to GetStudent method to fetch data from Database
+                        StudentDetails.GetStudent(); 
                         break;
 
                     default:

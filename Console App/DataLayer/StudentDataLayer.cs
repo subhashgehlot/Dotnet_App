@@ -7,10 +7,11 @@ namespace ConsoleApp.DataLayer {
     public class StudentDataLayer {
         // connection string in which the user, database, server and password is stored.
         string ConnectionString = ConfigurationManager.ConnectionStrings["Connection"].ToString();
-        public void AddStudent() {
-            
-            MySqlConnection Connection = new MySqlConnection(ConnectionString);
 
+        public void AddStudent() {
+
+            MySqlConnection Connection = new MySqlConnection(ConnectionString);
+    
             try {
                 Console.WriteLine("Connecting to MySQL...");
                 Connection.Open();
@@ -20,11 +21,11 @@ namespace ConsoleApp.DataLayer {
 
                 MySqlCommand Command = new MySqlCommand(InsertString, Connection);
 
-                Command.Parameters.AddWithValue("@StudentID", StudentID);
-                Command.Parameters.AddWithValue("@StudentName", StudentName);
-                Command.Parameters.AddWithValue("@StudentRollNo", StudentRollNo);
-                Command.Parameters.AddWithValue("@StudentGrade", StudentGrade);
-                Command.Parameters.AddWithValue("@StudentMarks", StudentMarks);
+                Command.Parameters.AddWithValue("@StudentID", Student.StudentID);
+                Command.Parameters.AddWithValue("@StudentName", Student.StudentName);
+                Command.Parameters.AddWithValue("@StudentRollNo", Student.StudentRollNo);
+                Command.Parameters.AddWithValue("@StudentGrade", Student.StudentGrade);
+                Command.Parameters.AddWithValue("@StudentMarks", Student.StudentMarks);
 
                 Command.ExecuteNonQuery();
                 
