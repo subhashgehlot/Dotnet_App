@@ -4,34 +4,35 @@ using MySqlConnector;
 using ConsoleApp.Models;
 
 namespace ConsoleApp.DataLayer {
-    public class StudentDataLayer {
+    public class MyDatabaseConnection {
         // connection string in which the user, database, server and password is stored.
         string ConnectionString = ConfigurationManager.ConnectionStrings["Connection"].ToString();
 
-        public void AddStudent() {
+        public void AddStudent(Student student) {
 
             MySqlConnection Connection = new MySqlConnection(ConnectionString);
-    
-                Console.WriteLine("Connecting to MySQL...");
+
+            Console.WriteLine("Connecting to MySQL...");
+
             try {
                 Connection.Open();
 
                 // Insert values into studentdetails table
-                string InsertString = "INSERT INTO studentdetails(Student_Id, Student_Name, Student_Roll_no, Student_Grade, Student_Marks) VALUES(@StudentID, @StudentName, @StudentRollNo, @StudentGrade, @StudentMarks)";
+                string InsertString = "INSERT INTO studentdetails(ID, Name, Roll_No, Grade, Marks) VALUES(@ID, @Name, @RollNo, @Grade, @Marks)";
 
                 MySqlCommand Command = new MySqlCommand(InsertString, Connection);
 
-                Command.Parameters.AddWithValue("@StudentID", Student.StudentID);
-                Command.Parameters.AddWithValue("@StudentName", Student.StudentName);
-                Command.Parameters.AddWithValue("@StudentRollNo", Student.StudentRollNo);
-                Command.Parameters.AddWithValue("@StudentGrade", Student.StudentGrade);
-                Command.Parameters.AddWithValue("@StudentMarks", Student.StudentMarks);
+                Command.Parameters.AddWithValue("@ID", student.ID);
+                Command.Parameters.AddWithValue("@Name", student.Name);
+                Command.Parameters.AddWithValue("@RollNo", student.RollNo);
+                Command.Parameters.AddWithValue("@Grade", student.Grade);
+                Command.Parameters.AddWithValue("@Marks", student.Marks);
 
                 Command.ExecuteNonQuery();
                 
                 Connection.Close();
                 Console.WriteLine("Done.");
-            } catch (Exception ex) {
+            } catch (MySqlException ex) {
 
                 Console.WriteLine(ex.ToString());
             }
@@ -41,14 +42,14 @@ namespace ConsoleApp.DataLayer {
 
             Console.Write("Enter a Student ID to search in Database: ");
             String ID = Console.ReadLine();
-        
-            bool Temp = false;
 
-                Console.WriteLine("Fetching The Data from Database...");
+            bool Temp = false;
+            Console.WriteLine("Fetching The Data from Database...");
+            
             try {
                 Connection.Open();
 
-                string FetchString = "SELECT Student_Name, Student_Roll_no FROM studentdetails WHERE Student_Id = '" + ID + "'";
+                string FetchString = "SELECT Name, Roll_No FROM studentdetails WHERE ID = '" + ID + "'";
                 
                 MySqlCommand Command = new MySqlCommand(FetchString, Connection);
                 MySqlDataReader Data = Command.ExecuteReader();
@@ -63,7 +64,7 @@ namespace ConsoleApp.DataLayer {
                     Console.WriteLine("Student with given ID is not present");
                 }
                 Data.Close();
-            } catch(Exception ex) {
+            } catch(MySqlException ex) {
                 Console.WriteLine(ex.ToString());
             }
 

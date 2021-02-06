@@ -5,39 +5,45 @@ using ConsoleApp.Logic;
 
 namespace ConsoleApp {
     public class Program {
-        public static void Main(String[] args) {
+        void StudentFunction() {
 
-            Student StudentData = new Student();
-            StudentDataLayer StudentDetails = new StudentDataLayer();
-            char Agree;
+            MyDatabaseConnection studentData = new MyDatabaseConnection();
+            StudentLogic studentLogic = new StudentLogic();
 
-            do {
-                Console.WriteLine("\n\t**********DashBoard**********");
-                Console.WriteLine("\t1. Enter Details of Students to store in database.");
-                Console.WriteLine("\t2. To retrieve any student detail by entering ID.");
-                Console.Write("\nEnter choice to perform task: ");
+                Console.WriteLine("\t1. Add Students details. ");
+                Console.WriteLine("\t2. Get student detail by ID.");
+                Console.WriteLine("\t3. Exit.");
+                Console.Write("Enter Choice: ");
                 int Choice = Convert.ToInt32(Console.ReadLine());        
 
                 switch(Choice) {
                     case 1:
                         // call to GiveStudentDetail to enter student's details
-                        StudentLogic.GiveStudentDetails();
+                        Student student = studentLogic.GetStudentDetailsFromUser();
                         // call to AddStudent method to store entered details in Database 
-                        StudentDetails.AddStudent();
+                        studentData.AddStudent(student);
                         break;
 
                     case 2:
                         // call to GetStudent method to fetch data from Database
-                        StudentDetails.GetStudent(); 
+                        studentData.GetStudent();
+                        break;
+
+                    case 3:
+                        System.Environment.Exit(0);
                         break;
 
                     default:
                         Console.WriteLine("Please enter Correct choice!!!");
                         break;
                 }
-                Console.Write("Do you want to continue(N/Y): ");
-                Agree = Convert.ToChar(Console.ReadLine());
-            } while(Agree == 'y' || Agree == 'Y');
+        }
+        public static void Main(String[] args) {
+
+            do {
+                Program student = new Program();
+                student.StudentFunction();
+            } while(true);
         }
     }
 }
