@@ -12,8 +12,8 @@ namespace ConsoleApp.DataLayer {
 
             MySqlConnection Connection = new MySqlConnection(ConnectionString);
     
-            try {
                 Console.WriteLine("Connecting to MySQL...");
+            try {
                 Connection.Open();
 
                 // Insert values into studentdetails table
@@ -44,8 +44,8 @@ namespace ConsoleApp.DataLayer {
         
             bool Temp = false;
 
-            try {
                 Console.WriteLine("Fetching The Data from Database...");
+            try {
                 Connection.Open();
 
                 string FetchString = "SELECT Student_Name, Student_Roll_no FROM studentdetails WHERE Student_Id = '" + ID + "'";

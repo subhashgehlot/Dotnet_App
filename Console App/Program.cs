@@ -1,6 +1,7 @@
 using System;
 using ConsoleApp.Models;
 using ConsoleApp.DataLayer;
+using ConsoleApp.Logic;
 
 namespace ConsoleApp {
     public class Program {
@@ -20,7 +21,7 @@ namespace ConsoleApp {
                 switch(Choice) {
                     case 1:
                         // call to GiveStudentDetail to enter student's details
-                        StudentData.GiveStudentDetails();
+                        StudentLogic.GiveStudentDetails();
                         // call to AddStudent method to store entered details in Database 
                         StudentDetails.AddStudent();
                         break;
