@@ -19,8 +19,7 @@ namespace ConsoleApp {
                 switch(Choice) {
                     case 1:
                         // call to GiveStudentDetail to enter student's details
-                        Student student;
-                        student=studentLogic.GetStudentDetailsFromUser();
+                        Student student = studentLogic.GetStudentDetailsFromUser();
                         // call to AddStudent method to store entered details in Database 
                         studentData.AddStudent(student);
                         break;
