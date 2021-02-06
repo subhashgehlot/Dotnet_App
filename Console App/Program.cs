@@ -14,7 +14,6 @@ namespace ConsoleApp {
                 Console.WriteLine("\t2. Get student detail by ID.");
                 Console.WriteLine("\t3. Exit.");
                 Console.Write("Enter Choice: ");
-
                 int Choice = Convert.ToInt32(Console.ReadLine());        
 
                 switch(Choice) {
