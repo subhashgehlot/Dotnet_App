@@ -4,7 +4,6 @@ using MySqlConnector;
 using ConsoleApp.Models;
 
 namespace ConsoleApp.DataLayer {
-<<<<<<< HEAD:Console App/DataLayer/MyDatabaseConnection.cs
     public class MyDatabaseConnection {
         // connection string in which the user, database, server and password is stored.
         string ConnectionString = ConfigurationManager.ConnectionStrings["Connection"].ToString();
@@ -15,17 +14,6 @@ namespace ConsoleApp.DataLayer {
 
             Console.WriteLine("Connecting to MySQL...");
 
-=======
-    public class StudentDataLayer {
-        // connection string in which the user, database, server and password is stored.
-        string ConnectionString = ConfigurationManager.ConnectionStrings["Connection"].ToString();
-
-        public void AddStudent() {
-
-            MySqlConnection Connection = new MySqlConnection(ConnectionString);
-    
-                Console.WriteLine("Connecting to MySQL...");
->>>>>>> d4db70cab8b6d299883cf6024f413d01bc854cf3:Console App/DataLayer/StudentDataLayer.cs
             try {
                 Connection.Open();
 
@@ -34,19 +22,11 @@ namespace ConsoleApp.DataLayer {
 
                 MySqlCommand Command = new MySqlCommand(InsertString, Connection);
 
-<<<<<<< HEAD:Console App/DataLayer/MyDatabaseConnection.cs
                 Command.Parameters.AddWithValue("@ID", student.ID);
                 Command.Parameters.AddWithValue("@Name", student.Name);
                 Command.Parameters.AddWithValue("@RollNo", student.RollNo);
                 Command.Parameters.AddWithValue("@Grade", student.Grade);
                 Command.Parameters.AddWithValue("@Marks", student.Marks);
-=======
-                Command.Parameters.AddWithValue("@StudentID", Student.StudentID);
-                Command.Parameters.AddWithValue("@StudentName", Student.StudentName);
-                Command.Parameters.AddWithValue("@StudentRollNo", Student.StudentRollNo);
-                Command.Parameters.AddWithValue("@StudentGrade", Student.StudentGrade);
-                Command.Parameters.AddWithValue("@StudentMarks", Student.StudentMarks);
->>>>>>> d4db70cab8b6d299883cf6024f413d01bc854cf3:Console App/DataLayer/StudentDataLayer.cs
 
                 Command.ExecuteNonQuery();
                 
@@ -63,13 +43,9 @@ namespace ConsoleApp.DataLayer {
             Console.Write("Enter a Student ID to search in Database: ");
             String ID = Console.ReadLine();
 
-<<<<<<< HEAD:Console App/DataLayer/MyDatabaseConnection.cs
             bool Temp = false;
             Console.WriteLine("Fetching The Data from Database...");
             
-=======
-                Console.WriteLine("Fetching The Data from Database...");
->>>>>>> d4db70cab8b6d299883cf6024f413d01bc854cf3:Console App/DataLayer/StudentDataLayer.cs
             try {
                 Connection.Open();
 
